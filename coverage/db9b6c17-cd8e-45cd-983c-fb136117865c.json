@@ -1,0 +1,16 @@
+{
+  "scriptId": "333",
+  "url": "file:///C:/Users/markw/repos/research/hono-test/tests/mappers/currentWeatherMapper.test.ts",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 0, "endOffset": 2427, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 194, "endOffset": 2424, "count": 1 }],
+      "isBlockCoverage": true
+    }
+  ]
+}

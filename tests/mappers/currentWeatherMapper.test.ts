@@ -1,0 +1,94 @@
+import { assertEquals } from "jsr:@std/assert";
+import { currentWeatherMapper } from "../../mappers/currentWeatherMapper.ts";
+
+Deno.test("currentWeatherMapper maps WeatherAPIResponse correctly", () => {
+  // Arrange: Create a sample WeatherAPIResponse object with 'current' properties.
+  const sampleData = {
+    "request": {
+      "type": "City",
+      "query": "Aguascalientes, Mexico",
+      "language": "en",
+      "unit": "m",
+    },
+    "location": {
+      "name": "Aguascalientes",
+      "country": "Mexico",
+      "region": "Aguascalientes",
+      "lat": "21.882",
+      "lon": "-102.283",
+      "timezone_id": "America/Mexico_City",
+      "localtime": "2025-05-27 09:48",
+      "localtime_epoch": 1748339280,
+      "utc_offset": "-6.0",
+    },
+    "current": {
+      "observation_time": "03:48 PM",
+      "temperature": 22,
+      "weather_code": 113,
+      "weather_icons": [
+        "https://cdn.worldweatheronline.com/images/wsymbols01_png_64/wsymbol_0001_sunny.png",
+      ],
+      "weather_descriptions": [
+        "Sunny",
+      ],
+      "astro": {
+        "sunrise": "07:06 AM",
+        "sunset": "08:26 PM",
+        "moonrise": "07:20 AM",
+        "moonset": "09:33 PM",
+        "moon_phase": "New Moon",
+        "moon_illumination": 0,
+      },
+      "air_quality": {
+        "co": "434.75",
+        "no2": "2.035",
+        "o3": "137",
+        "so2": "2.22",
+        "pm2_5": "19.425",
+        "pm10": "21.46",
+        "us-epa-index": "2",
+        "gb-defra-index": "2",
+      },
+      "wind_speed": 11,
+      "wind_degree": 203,
+      "wind_dir": "SSW",
+      "pressure": 1026,
+      "precip": 0,
+      "humidity": 50,
+      "cloudcover": 0,
+      "feelslike": 24,
+      "uv_index": 3,
+      "visibility": 10,
+      "is_day": "yes",
+    },
+  };
+
+  // Expected
+  const expectedCurrent = {
+    temperature: 22,
+    weather_code: 113,
+    weather_icons: [
+      "https://cdn.worldweatheronline.com/images/wsymbols01_png_64/wsymbol_0001_sunny.png",
+    ],
+    weather_descriptions: [
+      "Sunny",
+    ],
+    wind_speed: 11,
+    wind_degree: 203,
+    wind_dir: "SSW",
+    pressure: 1026,
+    precip: 0,
+    humidity: 50,
+    cloudcover: 0,
+    feelslike: 24,
+    uv_index: 3,
+    visibility: 10,
+    is_day: "yes",
+  };
+
+  // Act: Call the mapper function.
+  const result = currentWeatherMapper(sampleData);
+
+  // Assert: Check that the mapping returns the correct 'current' object.
+  assertEquals(result, expectedCurrent);
+});

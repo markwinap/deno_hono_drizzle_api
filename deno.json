@@ -1,0 +1,30 @@
+{
+  "imports": {
+    "@hono/arktype-validator": "npm:@hono/arktype-validator@^2.0.1",
+    "@hono/swagger-ui": "npm:@hono/swagger-ui@^0.5.1",
+    "arktype": "npm:arktype@^2.1.20",
+    "hono": "jsr:@hono/hono@^4.7.10",
+    "hono-openapi": "npm:hono-openapi@^0.4.8"
+  },
+  "tasks": {
+    "start": "deno run --allow-net main.ts",
+    "start_env": "deno run --env-file main.ts",
+    "test": "deno test --allow-env",
+    "test_coverage": "deno test --allow-env --coverage=coverage && deno coverage --lcov --output=lcov.info coverage"
+  },
+  "compilerOptions": {
+    "jsx": "precompile",
+    "jsxImportSource": "hono/jsx"
+  },
+  "fmt":{
+    "options": {
+      "lineWidth": 120,
+      "useTabs": true,
+      "indentWidth": 4,
+      "singleQuote": true,
+      "trailingComma": "all",
+      "quoteProps": "consistent",
+      "semiColons": true
+    }
+  }
+}

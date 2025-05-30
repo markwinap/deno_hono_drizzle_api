@@ -1,0 +1,84 @@
+{
+  "scriptId": "333",
+  "url": "file:///C:/Users/markw/repos/research/hono-test/tests/controllers/weatherController.test.ts",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 0, "endOffset": 4034, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "createMockContext",
+      "ranges": [{ "startOffset": 614, "endOffset": 829, "count": 5 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "query",
+      "ranges": [{ "startOffset": 696, "endOffset": 719, "count": 5 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "json",
+      "ranges": [
+        { "startOffset": 737, "endOffset": 822, "count": 5 },
+        { "startOffset": 778, "endOffset": 784, "count": 3 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "json",
+      "ranges": [{ "startOffset": 800, "endOffset": 813, "count": 5 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 909, "endOffset": 1457, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 1008, "endOffset": 1040, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 1532, "endOffset": 2094, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 1631, "endOffset": 1663, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 2163, "endOffset": 2762, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 2307, "endOffset": 2350, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 2835, "endOffset": 3401, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 2934, "endOffset": 2971, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 3504, "endOffset": 4031, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 3603, "endOffset": 3646, "count": 1 }],
+      "isBlockCoverage": true
+    }
+  ]
+}

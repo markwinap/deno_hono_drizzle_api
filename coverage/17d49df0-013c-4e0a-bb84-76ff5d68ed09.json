@@ -1,0 +1,23 @@
+{
+  "scriptId": "336",
+  "url": "file:///C:/Users/markw/repos/research/hono-test/controllers/weatherController.ts",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 0, "endOffset": 867, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "getWeather",
+      "ranges": [
+        { "startOffset": 189, "endOffset": 824, "count": 5 },
+        { "startOffset": 260, "endOffset": 279, "count": 4 },
+        { "startOffset": 394, "endOffset": 569, "count": 3 },
+        { "startOffset": 569, "endOffset": 820, "count": 2 },
+        { "startOffset": 751, "endOffset": 766, "count": 1 },
+        { "startOffset": 767, "endOffset": 799, "count": 1 }
+      ],
+      "isBlockCoverage": true
+    }
+  ]
+}

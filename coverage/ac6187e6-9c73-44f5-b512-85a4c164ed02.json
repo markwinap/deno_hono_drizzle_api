@@ -1,0 +1,33 @@
+{
+  "scriptId": "334",
+  "url": "file:///C:/Users/markw/repos/research/hono-test/services/weatherServices.ts",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 0, "endOffset": 744, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "<instance_members_initializer>",
+      "ranges": [{ "startOffset": 32, "endOffset": 41, "count": 9 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "WeatherService",
+      "ranges": [{ "startOffset": 45, "endOffset": 216, "count": 9 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "fetchCurrentWeather",
+      "ranges": [
+        { "startOffset": 219, "endOffset": 710, "count": 9 },
+        { "startOffset": 423, "endOffset": 448, "count": 7 },
+        { "startOffset": 448, "endOffset": 537, "count": 3 },
+        { "startOffset": 537, "endOffset": 579, "count": 4 },
+        { "startOffset": 579, "endOffset": 605, "count": 3 },
+        { "startOffset": 605, "endOffset": 706, "count": 6 }
+      ],
+      "isBlockCoverage": true
+    }
+  ]
+}
