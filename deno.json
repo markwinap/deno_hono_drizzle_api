@@ -2,12 +2,16 @@
   "imports": {
     "@hono/arktype-validator": "npm:@hono/arktype-validator@^2.0.1",
     "@hono/swagger-ui": "npm:@hono/swagger-ui@^0.5.1",
+    "@types/pg": "npm:@types/pg@^8.15.4",
     "arktype": "npm:arktype@^2.1.20",
+    "drizzle-kit": "npm:drizzle-kit@^0.31.1",
+    "drizzle-orm": "npm:drizzle-orm@^0.44.1",
     "hono": "jsr:@hono/hono@^4.7.10",
-    "hono-openapi": "npm:hono-openapi@^0.4.8"
+    "hono-openapi": "npm:hono-openapi@0.4.8",
+    "pg": "npm:pg@^8.16.0"
   },
   "tasks": {
-    "start": "deno run --allow-net main.ts",
+    "start": "deno run --allow-net --env=.env main.ts",
     "start_env": "deno run --env-file main.ts",
     "test": "deno test --allow-env",
     "test_coverage": "deno test --allow-env --coverage=coverage && deno coverage --lcov --output=lcov.info coverage"

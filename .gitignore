@@ -1,1 +1,8 @@
 .env
+# Node modules
+node_modules/
+# Coverage directory
+coverage/
+# lcov files
+*.lcov
+lcov.info

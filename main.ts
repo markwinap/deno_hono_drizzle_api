@@ -1,7 +1,7 @@
 import { Hono } from "npm:hono";
-import { compress } from 'hono/compress';
-import { logger } from 'hono/logger';
-import { describeRoute, openAPISpecs } from "npm:hono-openapi";
+import { compress } from 'npm:hono/compress';
+import { logger } from 'npm:hono/logger';
+import { describeRoute, openAPISpecs } from 'npm:hono-openapi';
 import { arktypeValidator } from "npm:@hono/arktype-validator";
 import { swaggerUI } from "@hono/swagger-ui";
 import { type } from "npm:arktype";

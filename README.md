@@ -31,3 +31,23 @@ deno task start
     - .env.local: Stores local environment variables.
 - package.json: Contains metadata about the project and its dependencies.
 - README.md: Provides an overview of the project, installation instructions, and usage information.
+
+## Drizzel DB ORM
+
+### Create schema from an excisting DB tables
+```sh
+deno --env -A --node-modules-dir npm:drizzle-kit pull
+```
+
+### Push schema to the DB directly
+```sh
+deno --env -A --node-modules-dir npm:drizzle-kit push
+```
+
+### Generate migration
+```sh
+deno --env -A --node-modules-dir npm:drizzle-kit generate
+deno --env -A --node-modules-dir npm:drizzle-kit migrate
+```
+
+

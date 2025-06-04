@@ -3,6 +3,8 @@ import { describeRoute } from 'npm:hono-openapi';
 import { getUsersSchema, getUserSchema, postUserSchema } from '../schemas/userSchema.ts';
 import { queryValidator, paramValidator, bodyValidator } from "../validators/userValidators.ts";
 import { requestValidator } from "../utils/errorUtil.ts";
+// UseerController.ts
+import { createUserHandler, getUsersHandler } from "../controllers/userController.ts";
 
 const user = new Hono();
 
@@ -10,7 +12,7 @@ user.get(
   '/',
   describeRoute(getUsersSchema),
   requestValidator('query', queryValidator),
-  (c) => c.text('List Users'),
+  getUsersHandler,
 );
 user.get('/:id',
   describeRoute(getUserSchema),
@@ -22,6 +24,7 @@ user.get('/:id',
 user.post('/',
   describeRoute(postUserSchema),
   requestValidator('json', bodyValidator),
-  (c) => c.text('Create User'));
+  createUserHandler,
+);
 
 export { user };
