@@ -3,9 +3,7 @@ import {
   pgTable,
   text,
   timestamp,
-  uniqueIndex,
 } from "drizzle-orm/pg-core";
-import { sql } from "drizzle-orm";
 
 const timestampColumns = {
   createdAt: timestamp().notNull().defaultNow(),

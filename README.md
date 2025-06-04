@@ -51,3 +51,30 @@ deno --env -A --node-modules-dir npm:drizzle-kit migrate
 ```
 
 
+Automatically instrument your application to send telemetry data to Grafana Cloud
+
+OTEL_TRACES_EXPORTER="otlp" \
+OTEL_EXPORTER_OTLP_ENDPOINT="https://otlp-gateway-prod-us-east-2.grafana.net/otlp" \
+OTEL_EXPORTER_OTLP_HEADERS="Authorization=Basic MTI3ODQzNTpnbGNfZXlKdklqb2lNVFEwT0RjNU1TSXNJbTRpT2lKemRHRmpheTB4TWpjNE5ETTFMVzkwWld3dGIyNWliMkZ5WkdsdVp5MTBaWE4wSWl3aWF5STZJbGgzTVdJek5tMDRNREV3V2pKck1HcG5ObmxaY2twdVpDSXNJbTBpT25zaWNpSTZJbkJ5YjJRdGRYTXRaV0Z6ZEMwd0luMTk="\
+OTEL_RESOURCE_ATTRIBUTES="service.name=my-app,service.namespace=my-application-group,deployment.environment=production" \
+OTEL_NODE_RESOURCE_DETECTORS="env,host,os" \
+NODE_OPTIONS="--require @opentelemetry/auto-instrumentations-node/register" \
+node <my-app>.js
+
+
+
+## Open Telemetry
+Documentation https://docs.deno.com/examples/grafana_tutorial/
+### Build Image
+```sh
+docker build -t otel-collector .
+```
+### Run OTEL Docker Image
+```sh
+docker run --env-file .env -p 4317:4317 -p 4318:4318 otel-collector
+```
+
+### Run Deno Server
+```sh
+deno run otel
+```
