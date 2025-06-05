@@ -16,4 +16,9 @@ const bodyValidator = type({
   email: Email,
 });
 
-export { bodyValidator, paramValidator, queryValidator };
+const bodyValidatorOptional = type({
+  name: type.string.optional(),
+  email: Email.optional(),
+});
+
+export { bodyValidator, paramValidator, queryValidator, bodyValidatorOptional };

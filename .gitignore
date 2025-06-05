@@ -6,3 +6,5 @@ coverage/
 # lcov files
 *.lcov
 lcov.info
+# Doc
+docs/

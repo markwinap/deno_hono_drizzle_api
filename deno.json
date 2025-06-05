@@ -14,6 +14,7 @@
     "start": "deno run --allow-net --allow-env --env=.env main.ts",
     "start_env": "deno run --env-file main.ts",
     "otel": "deno run --unstable-otel --allow-net --allow-env --env-file --allow-read main.ts",
+    "doc": "deno doc --html --name=\"Hono API\" ./services/ ./utils/ ./mappers/",
     "test": "deno test --allow-env",
     "test_coverage": "deno test --allow-env --coverage=coverage && deno coverage --lcov --output=lcov.info coverage"
   },
