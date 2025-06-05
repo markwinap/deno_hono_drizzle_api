@@ -1,36 +1,57 @@
-import { Hono } from 'npm:hono';
-import { describeRoute } from 'npm:hono-openapi';
-import { getUsersSchema, getUserSchema, postUserSchema } from '../schemas/userSchema.ts';
-import { bodyValidator, paramValidator, queryValidator, bodyValidatorOptional } from "../validators/userValidators.ts";
+import { Hono } from "npm:hono";
+import { describeRoute } from "npm:hono-openapi";
+import {
+  deleteUserSchema,
+  getUserSchema,
+  getUsersSchema,
+  patchUserSchema,
+  postUserSchema,
+} from "../schemas/userSchema.ts";
+import {
+  bodyValidator,
+  bodyValidatorOptional,
+  paramValidator,
+  queryValidator,
+} from "../validators/userValidators.ts";
 import { requestValidator } from "../utils/errorUtil.ts";
-import { createUserHandler, getUserHandler, getUsersHandler, updateUserHandler, deleteUserHandler } from "../controllers/userController.ts";
+import {
+  createUserHandler,
+  deleteUserHandler,
+  getUserHandler,
+  getUsersHandler,
+  updateUserHandler,
+} from "../controllers/userController.ts";
 
 const user = new Hono();
 
 user.get(
-  '/',
+  "/",
   describeRoute(getUsersSchema),
-  requestValidator('query', queryValidator),
+  requestValidator("query", queryValidator),
   getUsersHandler,
 );
-user.get('/:id',
+user.get(
+  "/:id",
   describeRoute(getUserSchema),
-  requestValidator('param', paramValidator),
+  requestValidator("param", paramValidator),
   getUserHandler,
 );
-user.patch('/:id',
+user.patch(
+  "/:id",
+  describeRoute(patchUserSchema),
+  requestValidator("json", bodyValidatorOptional),
+  updateUserHandler,
+);
+user.post(
+  "/",
   describeRoute(postUserSchema),
-  requestValidator('json', bodyValidator),
+  requestValidator("json", bodyValidator),
   createUserHandler,
 );
-user.post('/',
-  describeRoute(postUserSchema),
-  requestValidator('json', bodyValidator),
-  createUserHandler,
-);
-user.delete('/:id',
-  describeRoute(getUserSchema),
-  requestValidator('param', paramValidator),
+user.delete(
+  "/:id",
+  describeRoute(deleteUserSchema),
+  requestValidator("param", paramValidator),
   deleteUserHandler,
 );
 
