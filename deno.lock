@@ -2,9 +2,14 @@
   "version": "5",
   "specifiers": {
     "jsr:@hono/hono@^4.7.10": "4.7.11",
+    "jsr:@std/assert@*": "1.0.13",
+    "jsr:@std/assert@^1.0.13": "1.0.13",
+    "jsr:@std/internal@^1.0.6": "1.0.8",
+    "jsr:@std/testing@*": "1.0.13",
     "npm:@hono/arktype-validator@*": "2.0.1_arktype@2.1.20_hono@4.7.11",
     "npm:@hono/arktype-validator@^2.0.1": "2.0.1_arktype@2.1.20_hono@4.7.11",
     "npm:@hono/swagger-ui@~0.5.1": "0.5.1_hono@4.7.11",
+    "npm:@types/node@*": "22.15.15",
     "npm:@types/pg@^8.15.4": "8.15.4",
     "npm:arktype@*": "2.1.20",
     "npm:arktype@^2.1.20": "2.1.20",
@@ -19,6 +24,21 @@
   "jsr": {
     "@hono/hono@4.7.11": {
       "integrity": "52b9395e4f2448fbaf82a6bd7925d15e59f4055037e74d6c2f657f3618b11193"
+    },
+    "@std/assert@1.0.13": {
+      "integrity": "ae0d31e41919b12c656c742b22522c32fb26ed0cba32975cb0de2a273cb68b29",
+      "dependencies": [
+        "jsr:@std/internal"
+      ]
+    },
+    "@std/internal@1.0.8": {
+      "integrity": "fc66e846d8d38a47cffd274d80d2ca3f0de71040f855783724bb6b87f60891f5"
+    },
+    "@std/testing@1.0.13": {
+      "integrity": "74418be16f627dfe996937ab0ffbdbda9c1f35534b78724658d981492f121e71",
+      "dependencies": [
+        "jsr:@std/assert@^1.0.13"
+      ]
     }
   },
   "npm": {

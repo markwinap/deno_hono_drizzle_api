@@ -1,7 +1,7 @@
 import { assertEquals } from "jsr:@std/assert";
 import { restore, stub } from "jsr:@std/testing/mock";
-import { Context } from "hono";
-import { WeatherController } from "../../controllers/weatherController.ts";
+import { Context } from "npm:hono";
+import { getWeatherHandler } from "../../controllers/weatherController.ts";
 import weatherService from "../../services/weatherServices.ts";
 import { currentWeatherMapper } from "../../mappers/currentWeatherMapper.ts";
 import mockWeatherAPIResponse from "../mocks/weatherAPIMock.json" with { type: "json" };
@@ -17,7 +17,7 @@ const mockResposneBody = {
 function createMockContext(queryValues: Record<string, string> = {}): Context {
   return {
     req: {
-      query: (key: string) => queryValues[key],
+      query: () => queryValues,
     },
     json: (obj: unknown, status?: number) => ({
       status: status || 200,
@@ -26,27 +26,6 @@ function createMockContext(queryValues: Record<string, string> = {}): Context {
   } as unknown as Context;
 }
 
-Deno.test("WeatherController - getWeather with default city (Aguascalientes)", async () => {
-  // Arrange
-  const fetchStub = stub(
-    weatherService.prototype,
-    "fetchCurrentWeather",
-    async () => mockWeatherAPIResponse,
-  );
-  const controller = new WeatherController();
-  const mockContext = createMockContext();
-  try {
-    // Act
-    const result = await controller.getWeather(mockContext);
-    const responseBody = await result.json();
-    // Assert
-    assertEquals(fetchStub.calls[0].args[0], "Aguascalientes");
-    assertEquals(result.status, 200);
-    assertEquals(responseBody, mockResposneBody);
-  } finally {
-    restore();
-  }
-});
 Deno.test("WeatherController - getWeather with custom city from query", async () => {
   // Arrange
   const fetchStub = stub(
@@ -54,16 +33,14 @@ Deno.test("WeatherController - getWeather with custom city from query", async ()
     "fetchCurrentWeather",
     async () => mockWeatherAPIResponse,
   );
-
-  const controller = new WeatherController();
-  const mockContext = createMockContext({ name: "Paris" });
+  const mockContext = createMockContext({ name: "Aguascalientes" });
 
   try {
     // Act
-    const result = await controller.getWeather(mockContext);
+    const result = await getWeatherHandler(mockContext);
     const responseBody = await result.json();
     // Assert
-    assertEquals(fetchStub.calls[0].args[0], "Paris");
+    assertEquals(fetchStub.calls[0].args[0], "Aguascalientes");
     assertEquals(result.status, 200);
     assertEquals(responseBody, mockResposneBody);
   } finally {
@@ -79,14 +56,13 @@ Deno.test("WeatherController - getWeather handles Error objects", async () => {
     "fetchCurrentWeather",
     () => Promise.reject(new Error(errorMessage)),
   );
-
-  const controller = new WeatherController();
-  const mockContext = createMockContext();
+  const mockContext = createMockContext({ name: "Aguascalientes" });
 
   try {
     // Act
-    const result = await controller.getWeather(mockContext);
+    const result = await getWeatherHandler(mockContext);
     const responseBody = await result.json();
+    console.log("Response body:", responseBody);
     // Assert
     assertEquals(result.status, 500);
     assertEquals(responseBody, {
@@ -106,13 +82,11 @@ Deno.test("WeatherController - getWeather handles non-Error objects", async () =
     "fetchCurrentWeather",
     () => Promise.reject("Network timeout"),
   );
-
-  const controller = new WeatherController();
-  const mockContext = createMockContext();
+  const mockContext = createMockContext({ name: "Aguascalientes" });
 
   try {
     // Act
-    const result = await controller.getWeather(mockContext);
+    const result = await getWeatherHandler(mockContext);
     const responseBody = await result.json();
 
     // Assert
@@ -127,25 +101,21 @@ Deno.test("WeatherController - getWeather handles non-Error objects", async () =
   }
 });
 
-Deno.test("WeatherController - getWeather with empty query parameter falls back to Aguascalientes", async () => {
-  // Arrange
-  const fetchStub = stub(
-    weatherService.prototype,
-    "fetchCurrentWeather",
-    () => Promise.resolve(mockWeatherAPIResponse),
-  );
-
-  const controller = new WeatherController();
-  const mockContext = createMockContext({ name: "" });
-
+Deno.test("WeatherController - getWeather handles empty context", async () => {
+  const mockContext = createMockContext();
   try {
     // Act
-    const result = await controller.getWeather(mockContext);
-    const responseBody = await result.json()
+    const result = await getWeatherHandler(mockContext);
+    const responseBody = await result.json();
 
     // Assert
-    assertEquals(fetchStub.calls[0].args[0], "Aguascalientes");
-    assertEquals(result.status, 200);
+    assertEquals(result.status, 400);
+    assertEquals(responseBody, {
+      success: false,
+      data: null,
+      errors: "name must be a string (was missing)",
+      message: "Validation error",
+    });
   } finally {
     restore();
   }

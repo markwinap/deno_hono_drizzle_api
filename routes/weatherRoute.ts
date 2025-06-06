@@ -3,6 +3,7 @@ import { describeRoute } from 'npm:hono-openapi';
 import { getWeatherSchema } from '../schemas/weatherSchema.ts';
 import { queryValidator } from "../validators/weatherValidators.ts";
 import { requestValidator } from "../utils/errorUtil.ts";
+import { getWeatherHandler } from '../controllers/weatherController.ts';
 
 const weather = new Hono();
 
@@ -10,7 +11,7 @@ weather.get(
   '/',
   describeRoute(getWeatherSchema),
   requestValidator('query', queryValidator),
-  (c) => c.text('Get Current Weather'),
+  getWeatherHandler,
 );
 
 export { weather };

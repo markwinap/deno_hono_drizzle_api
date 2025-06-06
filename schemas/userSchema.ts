@@ -68,6 +68,7 @@ const getUsersSchema: DescribeRouteOptions = {
       },
     },
   ],
+  tags: ["Users"],
 };
 
 const getUserSchema: DescribeRouteOptions = {
@@ -109,6 +110,7 @@ const getUserSchema: DescribeRouteOptions = {
       },
     },
   ],
+  tags: ["Users"],
 };
 
 const postUserSchema: DescribeRouteOptions = {
@@ -155,6 +157,7 @@ const postUserSchema: DescribeRouteOptions = {
     },
   },
   parameters: [],
+  tags: ["Users"],
 };
 
 const patchUserSchema: DescribeRouteOptions = {
@@ -209,6 +212,7 @@ const patchUserSchema: DescribeRouteOptions = {
       },
     },
   ],
+  tags: ["Users"],
 };
 
 const deleteUserSchema: DescribeRouteOptions = {
@@ -245,6 +249,7 @@ const deleteUserSchema: DescribeRouteOptions = {
       },
     },
   ],
+  tags: ["Users"],
 };
 
 export {

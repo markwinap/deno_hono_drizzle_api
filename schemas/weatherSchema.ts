@@ -77,6 +77,7 @@ const getWeatherSchema: DescribeRouteOptions = {
       },
     },
   ],
+  tags: ["Weather"],
 };
 
 export { getWeatherSchema };
