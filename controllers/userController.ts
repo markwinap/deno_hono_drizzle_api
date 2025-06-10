@@ -87,7 +87,7 @@ const getUserHandler = async (c: Context) => {
 
 const createUserHandler = async (c: Context) => {
   try {
-    const data = bodyValidator(c.req.json());
+    const data = bodyValidator(await c.req.json());
     if (data instanceof type.errors) {
       return c.json({
         success: false,
@@ -118,7 +118,7 @@ const createUserHandler = async (c: Context) => {
 const updateUserHandler = async (c: Context) => {
   try {
     const id = c.req.param("id");
-    const body = bodyValidatorOptional(c.req.json());
+    const body = bodyValidatorOptional(await c.req.json());
     if (body instanceof type.errors) {
       return c.json({
         success: false,
